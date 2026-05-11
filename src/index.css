@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 33% 9%;
+    --foreground: 210 20% 97%;
+
+    --surface: 220 28% 13%;
+    --surface-elevated: 220 24% 17%;
+
+    --card: 220 28% 13%;
+    --card-foreground: 210 20% 97%;
+
+    --popover: 220 28% 13%;
+    --popover-foreground: 210 20% 97%;
+
+    --primary: 38 51% 58%;
+    --primary-foreground: 222 33% 9%;
+
+    --secondary: 220 24% 17%;
+    --secondary-foreground: 210 20% 97%;
+
+    --muted: 220 18% 22%;
+    --muted-foreground: 215 16% 70%;
+
+    --accent: 213 100% 75%;
+    --accent-foreground: 222 33% 9%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 20% 97%;
+
+    --border: 220 18% 22%;
+    --input: 220 18% 22%;
+    --ring: 38 51% 58%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Manrope', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .surface { background-color: hsl(var(--surface)); }
+  .surface-elevated { background-color: hsl(var(--surface-elevated)); }
+  .text-gold { color: hsl(var(--primary)); }
+  .border-hairline { border: 1px solid hsl(var(--border)); }
+  .hover-lift { transition: transform .3s ease, border-color .3s ease; }
+  .hover-lift:hover { transform: translateY(-4px); border-color: hsl(var(--primary) / .5); }
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .55; transform: scale(1.25); }
+}
+.animate-draw { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw 2.4s ease-out forwards infinite; animation-delay: .3s; }
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
